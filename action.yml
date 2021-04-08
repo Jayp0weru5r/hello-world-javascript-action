@@ -1,13 +1,18 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Zip Action'
+description: 'Create a .zip archive'
 inputs:
-  whotogreet:  # id of input
-    description: 'Who to greet'
+  glob:  # id of input
+    description: 'Glob (or multiple globs separated by a single space) to collect files for the archive'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: '**'
+  target:  # id of input
+    description: 'Output path (e.g. target/release.zip)'
+    required: true
+    default: 'release.zip'
+  cwd:  # id of input
+    description: 'Base directory for input files'
+    required: true
+    default: './'
 runs:
   using: 'node12'
   main: 'index.js'
